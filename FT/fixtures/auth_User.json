@@ -9,12 +9,12 @@
     "is_active": true, 
     "is_superuser": true, 
     "is_staff": true, 
-    "last_login": "2014-01-22T22:58:15.855Z", 
+    "last_login": "2014-02-15T02:01:23.770Z", 
     "groups": [], 
     "user_permissions": [], 
-    "password": "pbkdf2_sha256$12000$fF4QOFt5pHx3$OBEfGJSuX7Mm60QRif19YBf19RUduVvU7yYgzJVhNeQ=", 
+    "password": "pbkdf2_sha256$12000$d7i0YC0ry6Zr$KUEoT/y4jCgPdN41Z7QPEqghFntj7+jenPvxHtwW7yI=", 
     "email": "kb@example.com", 
-    "date_joined": "2014-01-22T22:58:15.855Z"
+    "date_joined": "2014-02-11T01:13:38.753Z"
   }
 }
 ]

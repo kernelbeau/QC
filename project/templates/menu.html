@@ -19,7 +19,8 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="{% url 'inspection:index' %}">What's New</a></li>
-          <li><a href="{% url 'inspection:feature-list' %}">Features</a></li>
+          <li><a href="{% url 'inspection:product-list' %}">Part #</a></li>
+          <li><a href="{% url 'inspection:batch-list' %}">Batch #</a></li>
         </ul>
       </li>
       {% if user.is_staff %}

@@ -1,0 +1,36 @@
+{% extends "inspection/base.html" %}
+
+{% block page_head %}
+  <div class="row">
+    {% block head_left %}
+      <div class="col-sm-6">
+        <h3>Batch {{ batch }} inspection...</h3>
+      </div>
+    {% endblock %}
+    {% block head_right %}
+      <div class="col-sm-6">
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block content_col %}
+	{% if batch_list %}
+		<table class="table table-striped">
+			<tr>
+				<th>#</th>
+				<th>Part</th>
+				<th>Quantity</th>
+			</tr>
+			{% for batch in batch_list %}
+				<tr>
+					<td><a href="{% url 'inspection:batch-detail' batch.slug %}">{{ batch }}</a></td>
+					<td>{{ batch.product }}</td>
+					<td>{{ batch.quantity }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Nothing released.</p>
+	{% endif %}
+{% endblock content_col %}

@@ -4,39 +4,30 @@
   <div class="row">
     {% block head_left %}
       <div class="col-sm-4">
-        <h3>Features...</h3>
+        <h3>Product...</h3>
       </div>
     {% endblock %}
     {% block head_right %}
       <div class="col-sm-8">
-
       </div>
     {% endblock %}
   </div>
 {% endblock %}
 
-
 {% block content_col %}
-
   <table class="table table-striped">
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Number</th>
+      <th>Name</th>
+			<th></th>
     </tr>
-    {% for item in object_list %}
+    {% for product in object_list %}
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+				<td><a href="{% url 'inspection:product-detail' product.slug %}">{{ product.number }}</a></td>
+        <td>{{ product }}</td>
       </tr>
     {% empty %}
-      <p>No current features.</p>
+      <p>No product currently available.</p>
     {% endfor %}
   </table>
-
 {% endblock content_col %}

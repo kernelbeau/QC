@@ -6,11 +6,10 @@ from inspection.views import *
 urlpatterns = patterns('inspection.views',
 
     url(r'^$', InspectionIndex.as_view(), name='index'),
-    url(r'features/$', FeatureList.as_view(), name='feature-list'),
-    #url(r'employee/new/$', EmployeeCreate.as_view(), name='employee-create'),
-    #url(r'employee/(?P<pk>\d+)/$', EmployeeDetail.as_view(), name='employee-detail'),
-    #url(r'employee/(?P<pk>\d+)/edit/$', EmployeeUpdate.as_view(), name='employee-update'),
-    #url(r'employee/(?P<pk>\d+)/remove/$', EmployeeDelete.as_view(), name='employee-delete'),
-    #url(r'edit/(?P<pk>\d+)/address/$', EditEmployeeAddress.as_view(), name='employee-address-edit'),
+    url(r'product/$', ProductList.as_view(), name='product-list'),
+    url(r'product/(?P<slug>\w+)/$', ProductDetail.as_view(), name='product-detail'),
+    url(r'batch/$', BatchList.as_view(), name='batch-list'),
+    url(r'batch/(?P<slug>\d+)/$', BatchDetail.as_view(), name='batch-detail'),
+    url(r'report/(?P<slug>\d+)/$', ReportList.as_view(), name='report-list'),
 
 )
