@@ -1,0 +1,35 @@
+{% extends "inspection/base.html" %}
+
+{% block page_head %}
+  <div class="row">
+    {% block head_left %}
+      <div class="col-sm-4">
+        <h3>Product...</h3>
+      </div>
+    {% endblock %}
+    {% block head_right %}
+      <div class="col-sm-8">
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block content_col %}
+	{% if object_list %}
+		<table class="table table-striped">
+			<tr>
+				<th>Number</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+			{% for product in object_list %}
+				<tr>
+					<td><a href="{% url 'inspection:product-detail' product.slug %}">{{ product.number }}</a></td>
+					<td>{{ product }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No product currently available.</p>
+	{% endif %}
+{% endblock content_col %}

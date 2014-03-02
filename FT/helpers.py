@@ -9,7 +9,7 @@ class MyTestCase(LiveServerTestCase):
     """ """
     fixtures = [
         'auth_User.json',
-#        'inspection.json',
+        'inspection.json',
     ]
 
     @classmethod

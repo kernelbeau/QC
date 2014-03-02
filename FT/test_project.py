@@ -27,19 +27,10 @@ class DjangoAdminTests(MyTestCase):
         self.driver.find_element_by_link_text('Log out').click()
         self.assertEqual(self.driver.current_url, self.live_server_url + '/admin/logout/')
 
-#skip
-class DjangoProjectTests(MyTestCase):
+#@skip
+class ProjectHomepage(MyTestCase):
     """ """
     def test_django_project_index_page(self):
         self.driver.get('%s%s' % (self.live_server_url, '/'))
         body = self.driver.find_element_by_tag_name('body')
         self.assertIn('My Company', body.text)
-
-    def test_visit_inspection_page(self):
-        self.driver.get('%s%s' % (self.live_server_url, '/'))
-        # click link to inspection
-        self.driver.find_element_by_link_text('Q.C.').click()
-        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/')
-        # view inspection home page
-        body = self.driver.find_element_by_tag_name('body')
-        self.assertIn('Inspection news...', body.text)

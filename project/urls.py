@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('',
     url(r'^$', Index.as_view(), name='index'),
-#    url(r'^qc/', include('inspection.urls', namespace='inspection')),
+    url(r'^qc/', include('inspection.urls', namespace='inspection')),
 )
 
 if settings.MY_HOST in settings.DEV_SERV:

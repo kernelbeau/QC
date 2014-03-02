@@ -1,0 +1,84 @@
+[
+{
+  "pk": 1, 
+  "model": "inspection.product", 
+  "fields": {
+    "product": "Cover", 
+    "number": 3, 
+    "slug": "cover", 
+    "revision": ""
+  }
+},
+{
+  "pk": 2, 
+  "model": "inspection.product", 
+  "fields": {
+    "product": "Shaft", 
+    "number": 2, 
+    "slug": "shaft", 
+    "revision": ""
+  }
+},
+{
+  "pk": 3, 
+  "model": "inspection.product", 
+  "fields": {
+    "product": "Plate", 
+    "number": 1, 
+    "slug": "plate", 
+    "revision": "A"
+  }
+},
+{
+  "pk": 1, 
+  "model": "inspection.feature", 
+  "fields": {
+    "product": 2, 
+    "limit_high": 1.501, 
+    "limit_low": 1.5, 
+    "feature": "1.500 diameter", 
+    "feature_type": "D"
+  }
+},
+{
+  "pk": 2, 
+  "model": "inspection.feature", 
+  "fields": {
+    "product": 2, 
+    "limit_high": 18.015, 
+    "limit_low": 17.985, 
+    "feature": "18.000 length", 
+    "feature_type": "D"
+  }
+},
+{
+  "pk": 1, 
+  "model": "inspection.batch", 
+  "fields": {
+    "product": 1, 
+    "batch": "1001", 
+    "slug": "1001", 
+    "quantity": "100"
+  }
+},
+{
+  "pk": 2, 
+  "model": "inspection.batch", 
+  "fields": {
+    "product": 2, 
+    "batch": "1002", 
+    "slug": "1002", 
+    "quantity": "200"
+  }
+},
+{
+  "pk": 3, 
+  "model": "inspection.batch", 
+  "fields": {
+    "product": 1, 
+    "batch": "1003", 
+    "slug": "1003", 
+    "quantity": "100"
+  }
+}
+]
