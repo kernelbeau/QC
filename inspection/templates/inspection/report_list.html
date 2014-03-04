@@ -15,5 +15,20 @@
 {% endblock %}
 
 {% block content_col %}
-	report detail
+	{% if object_list %}
+		<table class="table table-striped">
+			<tr>
+				<th>#</th>
+				<th>Batch #</th>
+			</tr>
+			{% for report in object_list %}
+				<tr>
+					<td><a href="{% url 'inspection:report-detail' report.batch report.slug %}">{{ report }}</a></td>
+					<td>{{ report.batch }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No report currently available.</p>
+	{% endif %}
 {% endblock content_col %}

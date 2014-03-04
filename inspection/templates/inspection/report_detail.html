@@ -4,7 +4,7 @@
   <div class="row">
     {% block head_left %}
       <div class="col-sm-6">
-        <h3>Report...</h3>
+        <h3>{{ product }}, {{ batch }}, {{ report }}</h3>
       </div>
     {% endblock %}
     {% block head_right %}
@@ -15,5 +15,26 @@
 {% endblock %}
 
 {% block content_col %}
-	report detail
+	{% if object_list %}
+		<table class="table table-striped">
+			<tr>
+				<th>Description</th>
+				<th>High Limit</th>
+				<th>Low Limit</th>
+				<th>Actual</th>
+				<th>Insp</th>
+			</tr>
+			{% for result in object_list %}
+				<tr>
+					<td>{{ result.feature }}</td>
+					<td>{{ result.feature.limit_high }}</td>
+					<td>{{ result.feature.limit_low }}</td>
+					<td>{{ result }}</td>
+					<td>{{ result.inspector }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Report not available.</p>
+	{% endif %}
 {% endblock content_col %}

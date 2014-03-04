@@ -26,6 +26,7 @@ admin.site.register(Batch, BatchAdmin)
 
 class ReportAdmin(admin.ModelAdmin):
     list_display = ('report',)
+    prepopulated_fields = {'slug': ('report',)}
 
 admin.site.register(Report, ReportAdmin)
 

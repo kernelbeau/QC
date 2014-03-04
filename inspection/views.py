@@ -12,74 +12,47 @@ class InspectionIndex(TemplateView):
 
 
 class ProductList(ListView):
-    """list of products"""
+    """list of all products"""
     model = Product
 
-    def get_context_data(self, **kwargs):
-        context = super(ProductList, self).get_context_data(**kwargs)
-        context['batch'] = Batch.objects.all()
-        return context
 
-
-class ProductDetail(ListView):
-    """ """
-    template_name = 'inspection/product_detail.html'
+class ProductBatchList(ListView):
+    """display batch orders by product"""
+    template_name = 'inspection/product_batch.html'
 
     def get_queryset(self):
-        self.product = get_object_or_404(Product, slug=self.kwargs['slug'])
+        self.product = get_object_or_404(Product, slug=self.kwargs['product'])
         return Batch.objects.filter(product=self.product)
 
     def get_context_data(self, **kwargs):
-        context = super(ProductDetail, self).get_context_data(**kwargs)
+        context = super(ProductBatchList, self).get_context_data(**kwargs)
         context['product'] = self.product
         return context
 
 
 class BatchList(ListView):
-    """list of batch orders"""
+    """list of all batch orders released"""
     model = Batch
-
-    def get_context_data(self, **kwargs):
-        context = super(BatchList, self).get_context_data(**kwargs)
-        context['product'] = Product.objects.all()
-        return context
-
-
-class BatchDetail(ListView):
-    """ """
-    model = Batch
-    template_name = 'inspection/batch_detail.html'
 
 
 class ReportList(ListView):
-    """ """
+    """display reports associated with batch"""
     def get_queryset(self):
-        self.batch = get_object_or_404(Batch, slug=self.kwargs['slug'])
+        self.batch = get_object_or_404(Batch, slug=self.kwargs['batch'])
         return Report.objects.filter(batch=self.batch)
 
 
-#class ReportCreate(CreateView):
-    #"""add inspection results then redirect to the list page"""
-    #model = Result
-    #success_url = reverse_lazy('inspection:feature-list')
+class ReportDetail(ListView):
+    """display inspection report"""
+    template_name = 'inspection/report_detail.html'
 
-    #def get_context_data(self, **kwargs):
-        #context = super(ReportCreate, self).get_context_data(**kwargs)
-        #context['action'] = reverse('inspection:report-create')
-        #return context
+    def get_queryset(self):
+        self.report = get_object_or_404(Report, slug=self.kwargs['report'])
+        return Result.objects.filter(report=self.report)
 
-
-#class ReportUpdate(UpdateView):
-    #"""edit a result object then redirect to the list page"""
-    #model = Result
-    #success_url = reverse_lazy('inspection:feature-list')
-
-    #def get_context_data(self, **kwargs):
-        #context = super(ReportUpdate, self).get_context_data(**kwargs)
-        #context['action'] = reverse('inspection:report-update', kwargs={'pk': self.get_object().id})
-        #return context
-
-
-#class FeatureList(ListView):
-    #"""list all of the inspection features"""
-    #model = Feature
+    def get_context_data(self, **kwargs):
+        context = super(ReportDetail, self).get_context_data(**kwargs)
+        context['batch'] = Batch.objects.get(slug=self.report.batch.slug)
+        context['product'] = Product.objects.get(slug=self.report.batch.product.slug)
+        context['report'] = self.report
+        return context

@@ -3,19 +3,17 @@
   "pk": 1, 
   "model": "inspection.product", 
   "fields": {
-    "product": "Cover", 
-    "number": 3, 
-    "slug": "cover", 
-    "revision": ""
+    "product": "Product_1", 
+    "slug": "product_1", 
+    "revision": "A"
   }
 },
 {
   "pk": 2, 
   "model": "inspection.product", 
   "fields": {
-    "product": "Shaft", 
-    "number": 2, 
-    "slug": "shaft", 
+    "product": "Product_2", 
+    "slug": "product_2", 
     "revision": ""
   }
 },
@@ -23,17 +21,27 @@
   "pk": 3, 
   "model": "inspection.product", 
   "fields": {
-    "product": "Plate", 
-    "number": 1, 
-    "slug": "plate", 
-    "revision": "A"
+    "product": "Product_3", 
+    "slug": "product_3", 
+    "revision": "C"
   }
 },
 {
   "pk": 1, 
   "model": "inspection.feature", 
   "fields": {
-    "product": 2, 
+    "product": 3, 
+    "limit_high": 18.515, 
+    "limit_low": 18.5, 
+    "feature": "18.500 overall length", 
+    "feature_type": "D"
+  }
+},
+{
+  "pk": 2, 
+  "model": "inspection.feature", 
+  "fields": {
+    "product": 3, 
     "limit_high": 1.501, 
     "limit_low": 1.5, 
     "feature": "1.500 diameter", 
@@ -41,34 +49,23 @@
   }
 },
 {
-  "pk": 2, 
-  "model": "inspection.feature", 
-  "fields": {
-    "product": 2, 
-    "limit_high": 18.015, 
-    "limit_low": 17.985, 
-    "feature": "18.000 length", 
-    "feature_type": "D"
-  }
-},
-{
   "pk": 1, 
   "model": "inspection.batch", 
   "fields": {
-    "product": 1, 
-    "batch": "1001", 
-    "slug": "1001", 
-    "quantity": "100"
+    "product": 3, 
+    "batch": "Batch_1", 
+    "slug": "batch_1", 
+    "quantity": "12"
   }
 },
 {
   "pk": 2, 
   "model": "inspection.batch", 
   "fields": {
-    "product": 2, 
-    "batch": "1002", 
-    "slug": "1002", 
-    "quantity": "200"
+    "product": 1, 
+    "batch": "Batch_2", 
+    "slug": "batch_2", 
+    "quantity": "24"
   }
 },
 {
@@ -76,9 +73,57 @@
   "model": "inspection.batch", 
   "fields": {
     "product": 1, 
-    "batch": "1003", 
-    "slug": "1003", 
-    "quantity": "100"
+    "batch": "Batch_3", 
+    "slug": "batch_3", 
+    "quantity": "15"
+  }
+},
+{
+  "pk": 4, 
+  "model": "inspection.batch", 
+  "fields": {
+    "product": 3, 
+    "batch": "Batch_4", 
+    "slug": "batch_4", 
+    "quantity": "18"
+  }
+},
+{
+  "pk": 1, 
+  "model": "inspection.report", 
+  "fields": {
+    "report": "Report_1", 
+    "batch": 3, 
+    "slug": "report_1"
+  }
+},
+{
+  "pk": 2, 
+  "model": "inspection.report", 
+  "fields": {
+    "report": "Report_2", 
+    "batch": 1, 
+    "slug": "report_2"
+  }
+},
+{
+  "pk": 1, 
+  "model": "inspection.result", 
+  "fields": {
+    "report": 1, 
+    "inspector": "kb", 
+    "feature": 1, 
+    "result": "18.505"
+  }
+},
+{
+  "pk": 2, 
+  "model": "inspection.result", 
+  "fields": {
+    "report": 1, 
+    "inspector": "kb", 
+    "feature": 2, 
+    "result": "1.500"
   }
 }
 ]

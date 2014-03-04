@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 
 class Product(models.Model):
     """ """
-    number = models.PositiveIntegerField(_('number'), max_length=8)
     product = models.CharField(_('product'), max_length=16)
     revision = models.CharField(_('revision'), max_length=2, null=True, blank=True)
     slug = models.SlugField(_('slug'), unique=True,)
@@ -26,9 +25,9 @@ class Product(models.Model):
 class Feature(models.Model):
     """ """
     ATTRIBUTE = 'A'; DIMENSION = 'D'
-    TYPE = ((ATTRIBUTE, 'Atribute'), (DIMENSION, 'Dimension'),)
+    FEATURE_TYPE = ((ATTRIBUTE, 'Atribute'), (DIMENSION, 'Dimension'),)
     feature = models.CharField(_('feature'), max_length=128, null=True, blank=True)
-    feature_type = models.CharField(max_length=2, choices=TYPE, default=DIMENSION)
+    feature_type = models.CharField(max_length=2, choices=FEATURE_TYPE, default=DIMENSION)
     limit_high = models.FloatField(_('limit high'),max_length=8, null=True, blank=True)
     limit_low = models.FloatField(_('limit low'),max_length=8, null=True, blank=True)
     product = models.ForeignKey('Product')
@@ -64,8 +63,8 @@ class Batch(models.Model):
 class Report(models.Model):
     """ """
     batch = models.ForeignKey('Batch')
-    inspector = models.CharField(_('inspector'), max_length=32)
     report = models.CharField(_('report'), max_length=8)
+    slug = models.SlugField(_('slug'), unique=True,)
 
     def __unicode__(self):
         return u'%s' % (self.report)
@@ -79,6 +78,7 @@ class Report(models.Model):
 class Result(models.Model):
     """ """
     feature = models.ForeignKey('Feature')
+    inspector = models.CharField(_('inspector'), max_length=32)
     report = models.ForeignKey('Report')
     result = models.CharField(_('result'), max_length=8)
 

@@ -19,13 +19,11 @@
 		<table class="table table-striped">
 			<tr>
 				<th>Number</th>
-				<th>Name</th>
 				<th></th>
 			</tr>
 			{% for product in object_list %}
 				<tr>
-					<td><a href="{% url 'inspection:product-detail' product.slug %}">{{ product.number }}</a></td>
-					<td>{{ product }}</td>
+					<td><a href="{% url 'inspection:product-batch' product.slug %}">{{ product }}</a></td>
 				</tr>
 			{% endfor %}
 		</table>
