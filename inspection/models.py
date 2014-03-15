@@ -19,7 +19,7 @@ class Product(models.Model):
         verbose_name_plural = _('products')
 
     def get_absolute_url(self):
-        return reverse('product-detail', kwargs={'pk': self.pk,})
+        return reverse('product-detail', kwargs={'pk': self.pk, 'slug': self.slug})
 
 
 class Feature(models.Model):
@@ -41,7 +41,7 @@ class Feature(models.Model):
         verbose_name_plural = _('features')
 
     def get_absolute_url(self):
-        return reverse('feature-detail', kwargs={'pk': self.pk,})
+        return reverse('feature-detail', kwargs={'pk': self.pk, 'slug': self.slug})
 
 
 class Batch(models.Model):
@@ -73,6 +73,9 @@ class Report(models.Model):
         db_table = 'qc_report'
         verbose_name = _('report')
         verbose_name_plural = _('reports')
+
+    def get_absolute_url(self):
+        return reverse('report-detail', kwargs={'pk': self.pk, 'slug': self.slug})
 
 
 class Result(models.Model):

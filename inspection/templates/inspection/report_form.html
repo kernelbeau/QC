@@ -1,0 +1,43 @@
+{% extends "inspection/base.html" %}
+
+{% block page_head %}
+  <div class="row">
+    {% block head_left %}
+      <div class="col-sm-4">
+        {% if report.id %}
+          <h3>Update report...</h3>
+        {% else %}
+          <h3>New report...</h3>
+        {% endif %}
+      </div>
+    {% endblock %}
+    {% block head_right %}
+      <div class="col-sm-8">
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block content_col %}
+  <form class="form-inline" role="form" action="{{ action }}" method="POST">{% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+    {% for field in form.visible_fields %}
+      <div id="{{ field.auto_id }}_container" class="form-group">
+        <div class="fieldwrapper">
+          <div id="{{ field.auto_id }}_errors">
+            {{ field.errors }}
+          </div>
+          <div>
+            {{ field.label_tag }} {{ field }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <div>
+      <button type='submit' class="btn btn-warning">update</button>
+      <a href="{% url 'inspection:batch-list' %}" class="btn btn-default" role="button">cancel</a>
+    </div>
+  </form>
+{% endblock content_col %}

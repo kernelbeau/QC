@@ -3,12 +3,13 @@
 {% block page_head %}
   <div class="row">
     {% block head_left %}
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <h3>Report...</h3>
       </div>
     {% endblock %}
     {% block head_right %}
-      <div class="col-sm-6">
+      <div class="col-sm-8">
+
       </div>
     {% endblock %}
   </div>
@@ -21,14 +22,15 @@
 				<th>#</th>
 				<th>Batch #</th>
 			</tr>
-			{% for report in object_list %}
-				<tr>
-					<td><a href="{% url 'inspection:report-detail' report.batch report.slug %}">{{ report }}</a></td>
-					<td>{{ report.batch }}</td>
-				</tr>
-			{% endfor %}
+		{% for report in object_list %}
+			<tr>
+				<td><a href="{% url 'inspection:report-detail' report.batch report.slug %}">{{ report }}</a></td>
+				<td>{{ report.batch }}</td>
+			</tr>
 		</table>
+		<a href="{% url 'inspection:report-create' report.batch.slug %}" class="btn btn-warning navbar-right" role="button">New Report</a>
+		{% endfor %}
 	{% else %}
-		<p>No report currently available.</p>
+		<p>No reports currently available.</p>
 	{% endif %}
 {% endblock content_col %}
