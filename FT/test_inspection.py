@@ -35,21 +35,21 @@ class InspectionProduct(MyTestCase):
         # click links to product-batch
         self.driver.find_element_by_link_text("Inspection").click()
         self.driver.find_element_by_link_text("Part #").click()
-        self.driver.find_element_by_link_text("3").click()
+        self.driver.find_element_by_link_text("Product_1").click()
         # view product-batch page
-        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/product/cover/')
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/product/product_1/')
         body = self.driver.find_element_by_tag_name('body')
-        self.assertIn('3, Cover...', body.text)
+        self.assertIn('Product_1...', body.text)
 
     def test_view_product_batch_report_page(self):
         self.driver.get('%s%s' % (self.live_server_url, '/'))
         # click links to product-batch-report
         self.driver.find_element_by_link_text("Inspection").click()
         self.driver.find_element_by_link_text("Part #").click()
-        self.driver.find_element_by_link_text("3").click()
-        self.driver.find_element_by_link_text("1001").click()
+        self.driver.find_element_by_link_text("Product_1").click()
+        self.driver.find_element_by_link_text("Batch_3").click()
         # view product-batch-report page
-        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/report/1001/')
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/report/batch_3/')
         body = self.driver.find_element_by_tag_name('body')
         self.assertIn('Report...', body.text)
 
@@ -71,8 +71,13 @@ class InspectionBatch(MyTestCase):
         # click links to batch-report page
         self.driver.find_element_by_link_text("Inspection").click()
         self.driver.find_element_by_link_text("Batch #").click()
-        self.driver.find_element_by_link_text("1001").click()
+        self.driver.find_element_by_link_text("Batch_3").click()
         # view batch-report page
-        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/report/1001/')
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/report/batch_3/')
         body = self.driver.find_element_by_tag_name('body')
         self.assertIn('Report...', body.text)
+        # click report link and view inspection report
+        self.driver.find_element_by_link_text("Report_1").click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/Batch_3/report_1')
+        body = self.driver.find_element_by_tag_name('body')
+        self.assertIn('Description', body.text)

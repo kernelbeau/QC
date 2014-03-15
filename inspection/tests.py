@@ -14,10 +14,10 @@ class ProductList(TestCase):
 
     def test_empty_product_list_displays_message(self):
         product_list = self.client.get(reverse('inspection:product-list'))
-        self.assertContains(product_list, 'No product currently available')
+        self.assertContains(product_list, 'No products currently available')
 
     def test_product_list_displays_part_names(self):
-        Product.objects.create(number='101', product='Part', revision='A', slug='part')
+        Product.objects.create(product='Part', revision='A', slug='part')
         product_list = self.client.get(reverse('inspection:product-list'))
         self.assertContains(product_list, 'Part')
 
@@ -25,7 +25,7 @@ class ProductList(TestCase):
 class BatchList(TestCase):
     """" """
     def setUp(self):
-        Product.objects.create(number='101', product='Part_name', revision='A', slug='part')
+        Product.objects.create(product='Part_name', revision='A', slug='part')
 
     def test_display_inspection_batch_page(self):
         batch_list = self.client.get(reverse('inspection:batch-list'))
