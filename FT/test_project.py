@@ -34,3 +34,33 @@ class ProjectHomepage(MyTestCase):
         self.driver.get('%s%s' % (self.live_server_url, '/'))
         body = self.driver.find_element_by_tag_name('body')
         self.assertIn('My Company', body.text)
+
+    def test_visit_inspection_home_page(self):
+        self.driver.get('%s%s' % (self.live_server_url, '/'))
+        # click link to inspection
+        self.driver.find_element_by_link_text('Inspection').click()
+        self.driver.find_element_by_link_text("What's New").click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/')
+        # view inspection home page
+        body = self.driver.find_element_by_tag_name('body')
+        self.assertIn('Inspection news...', body.text)
+
+    def test_visit_inspection_product_page(self):
+        self.driver.get('%s%s' % (self.live_server_url, '/'))
+        # click link to inspection part #s
+        self.driver.find_element_by_link_text('Inspection').click()
+        self.driver.find_element_by_link_text('Part #').click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/product/')
+        # view inspection part #s page
+        body = self.driver.find_element_by_tag_name('body')
+        self.assertIn('Product...', body.text)
+
+    def test_visit_inspection_batch_page(self):
+        self.driver.get('%s%s' % (self.live_server_url, '/'))
+        # click link to inspection batch
+        self.driver.find_element_by_link_text('Inspection').click()
+        self.driver.find_element_by_link_text('Batch #').click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/qc/batch/')
+        # view inspection batch page
+        body = self.driver.find_element_by_tag_name('body')
+        self.assertIn('Batch...', body.text)
